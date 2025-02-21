@@ -1,140 +1,126 @@
-MNIST Classification Using a Fully Connected Neural Network
 
-Overview
+# MNIST Classification Using a Fully Connected Neural Network
+
+
+## Overview
 
 This project implements a fully connected Deep Neural Network (DNN) from scratch using PyTorch to classify the MNIST dataset. The goal was to examine the impact of Batch Normalization (BatchNorm) on training speed and accuracy. Two configurations were tested:
 
-Without BatchNorm
+- Without BatchNorm
 
-With BatchNorm
+- With BatchNorm
 
 The results indicate that BatchNorm did not improve performance in this case, providing an interesting insight into its effectiveness under specific configurations.
-
-Network Architecture
+## Network Architecture
 
 The model consists of the following layers:
 
-Input Layer: 784 neurons (28x28 grayscale images flattened)
+- #### Input Layer: 784 neurons (28x28 grayscale images flattened)
 
-Hidden Layers:
+- #### Hidden Layers:
 
-1st hidden layer: 20 neurons
+    - 1st hidden layer: 20 neurons
 
-2nd hidden layer: 7 neurons
+    - 2nd hidden layer: 7 neurons
 
-3rd hidden layer: 5 neurons
+    - 3rd hidden layer: 5 neurons
 
-Output Layer: 10 neurons (corresponding to the 10 MNIST classes)
+    - Output Layer: 10 neurons (corresponding to the 10 MNIST classes)
 
-Activation Functions:
+#### Activation Functions:
 
-ReLU for hidden layers
+- ReLU for hidden layers
 
-Softmax for output layer
+- Softmax for output layer
 
-Loss Function:
+#### Loss Function:
 
-Cross-entropy loss
+- Cross-entropy loss
+## Hyperparameters
 
-Hyperparameters
+- **Learning rate:** 0.009
 
-Learning rate: 0.009
+- **Batch size:** 256
 
-Batch size: 256
+- **Maximum epochs:** 200
 
-Maximum epochs: 200
+- **Stopping criterion:** Early stopping after 100 consecutive iterations without improvement in validation loss.
+## Results
 
-Stopping criterion: Early stopping after 100 consecutive iterations without improvement in validation loss.
+## Without BatchNorm
+- **Training epochs:** 58
 
-Results
+- **Total training time:** 120.75 seconds
 
-Without BatchNorm
+- **Batches to convergence:** 11,230
 
-Training epochs: 58
+- **Final Accuracies:**
 
-Total training time: 120.75 seconds
+    - Train accuracy: 91.89%
 
-Batches to convergence: 11,230
+    - Validation accuracy: 91.53%
 
-Final Accuracies:
+    - Test accuracy: 91.57%
 
-Train accuracy: 91.89%
+## With BatchNorm
+- **Training epochs:** 64
 
-Validation accuracy: 91.53%
+- **Total training time:** 197.44 seconds
 
-Test accuracy: 91.57%
+- **Batches to convergence:** 12,357
 
-With BatchNorm
+- **Final Accuracies:** 
 
-Training epochs: 64
+    - Train accuracy: 88.44%
 
-Total training time: 197.44 seconds
+    - Validation accuracy: 88.3%
 
-Batches to convergence: 12,357
+    - Test accuracy: 88.34%
 
-Final Accuracies:
 
-Train accuracy: 88.44%
+## Accuracy and Loss over Epochs
+## Analysis & Observations
 
-Validation accuracy: 88.3%
+- **BatchNorm did not improve classification accuracy** in this specific case. The network without BatchNorm achieved a higher test accuracy (91.57%) compared to with BatchNorm (88.34%).
 
-Test accuracy: 88.34%
+- **Training Speed:** The model trained faster without BatchNorm (58 epochs vs. 64 epochs).
 
-Accuracy and Loss over Epochs
+- **Numerical Stability:** Contrary to expectations, BatchNorm did not improve numerical stability in this case. This could be due to applying BatchNorm before activation instead of after, which is often recommended for better performance.
+## Regularization & Improvements
 
+## L2 Regularization
 
+I introduced L2 Regularization to improve generalization:
 
-Analysis & Observations
+- compute_cost Function:
 
-BatchNorm did not improve classification accuracy in this specific case. The network without BatchNorm achieved a higher test accuracy (91.57%) compared to with BatchNorm (88.34%).
+    - Added an L2 regularization term: (λ/2m) * sum(W^2) to penalize large weights.
 
-Training Speed: The model trained faster without BatchNorm (58 epochs vs. 64 epochs).
+    - The final cost now includes both cross-entropy loss and L2 regularization.
 
-Numerical Stability: Contrary to expectations, BatchNorm did not improve numerical stability in this case. This could be due to applying BatchNorm before activation instead of after, which is often recommended for better performance.
+- update_parameters Function:
 
-Regularization & Improvements
+    - Adjusted weight updates to include λ * W in gradient computations.
 
-L2 Regularization
+    - L2 regularization is optional and controlled via a parameter.
 
-We introduced L2 Regularization to improve generalization:
+- **Impact of L2 Regularization:**
 
-compute_cost** Function**:
+    - Helped reduce overfitting by shrinking model weights towards zero.
 
-Added an L2 regularization term: (λ/2m) * sum(W^2) to penalize large weights.
+    - Led to more stable training with improved generalization.
+## L2 Regularization Effect on Weights
+## Requirements
 
-The final cost now includes both cross-entropy loss and L2 regularization.
+- Python 3.8+
 
-update_parameters** Function**:
+- PyTorch
 
-Adjusted weight updates to include λ * W in gradient computations.
+- NumPy
 
-L2 regularization is optional and controlled via a parameter.
+- Jupyter Notebook
+## Authors
 
-Impact of L2 Regularization:
+- Roi Garber
 
-Helped reduce overfitting by shrinking model weights towards zero.
-
-Led to more stable training with improved generalization.
-
-L2 Regularization Effect on Weights
-
-
-
-Requirements
-
-Python 3.8+
-
-PyTorch
-
-NumPy
-
-Jupyter Notebook
-
-Authors
-
-Roi Garber (209466614)
-
-Nicole Kaplan (206912891)
-
-This project was part of an academic exercise to build a deep neural network from scratch and study the impact of Batch Normalization and L2 Regularization.
-
+- Nicole Kaplan
