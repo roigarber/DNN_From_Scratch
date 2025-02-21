@@ -77,6 +77,7 @@ The model consists of the following layers:
 
     - Test accuracy: 88.34%
 
+![image](https://github.com/user-attachments/assets/fc519fe9-cea5-4ab1-bba6-4ae2b4f94464)
 
 ## Accuracy and Loss over Epochs
 ## Analysis & Observations
