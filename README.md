@@ -61,6 +61,8 @@ The model consists of the following layers:
     - Validation accuracy: 91.53%
 
     - Test accuracy: 91.57%
+ 
+  ![image](https://github.com/user-attachments/assets/fc519fe9-cea5-4ab1-bba6-4ae2b4f94464)
 
 ## With BatchNorm
 - **Training epochs:** 64
@@ -77,9 +79,8 @@ The model consists of the following layers:
 
     - Test accuracy: 88.34%
 
-![image](https://github.com/user-attachments/assets/fc519fe9-cea5-4ab1-bba6-4ae2b4f94464)
+![image](https://github.com/user-attachments/assets/bf5a6a88-fdeb-4422-ae84-9bee650bd02c)
 
-## Accuracy and Loss over Epochs
 ## Analysis & Observations
 
 - **BatchNorm did not improve classification accuracy** in this specific case. The network without BatchNorm achieved a higher test accuracy (91.57%) compared to with BatchNorm (88.34%).
@@ -110,7 +111,9 @@ I introduced L2 Regularization to improve generalization:
     - Helped reduce overfitting by shrinking model weights towards zero.
 
     - Led to more stable training with improved generalization.
-## L2 Regularization Effect on Weights
+
+![image](https://github.com/user-attachments/assets/9a2e931f-ddbb-452c-a767-2205fabe0fdb)
+
 ## Requirements
 
 - Python 3.8+
