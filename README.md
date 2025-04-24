@@ -1,7 +1,7 @@
 
 # MNIST Classification Using a Fully Connected Neural Network
 
-![Image](https://github.com/user-attachments/assets/fc099a0c-fc50-4675-9854-adacebee931c)
+![image](https://github.com/user-attachments/assets/fd16d9fa-0875-4875-bdf5-2fb821dd4332)
 
 ## Table of contents
 
