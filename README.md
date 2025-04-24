@@ -1,6 +1,21 @@
 
 # MNIST Classification Using a Fully Connected Neural Network
 
+![Image](https://github.com/user-attachments/assets/fc099a0c-fc50-4675-9854-adacebee931c)
+
+## Table of contents
+
+1. [Overview](#overview)
+2. [Network Architecture](#network-architecture)
+3. [Hyperparameters](#hyperparameters)
+4. [Results](#results)
+   1. [Without BatchNorm](#without-batchnorm)
+   2. [With BatchNorm](#with-batchnorm)
+5. [Analysis & Observations](#analysis--observations)
+6. [Regularization & Improvements](#regularization--improvements)
+7. [Requirements](#requirements)
+8. [Authors](#authors)
+
 
 ## Overview
 
